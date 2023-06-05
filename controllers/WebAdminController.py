@@ -1,22 +1,28 @@
-from flask import Flask, render_template, request
+from flask import Flask
 
 from resources.config import project_name 
 from views.WebAdminView import WebAdminView
 
-app = Flask(project_name)
 
 class WebAdminController:
-    def __init__(self):
+    def __init__(self, db):
         self.view = WebAdminView()
+        self.db = db
+        self.app = Flask(project_name)
 
-    @app.route('/admin/create_test', methods=['GET','POST'])
+    def run_app(self):
+        self.app.run()
+
     def create_test():
         pass
 
-    @app.route('/admin/view_tests', methods=['GET'])
+    def add_student():
+        pass
+
     def view_tests():
         pass
 
-    @app.route('/admin/add_student', methods=['GET','POST'])
-    def add_student():
-        pass
+    def view_students(self):
+        students = []
+        print('contr')
+        return self.view.show_students(students)
