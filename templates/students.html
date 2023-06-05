@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Students</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
 </head>
 <body>
+    {% include 'header.jinja' %}
+
     <h1>Students</h1>
     <div class="students_container">
         {% for student in students %}
