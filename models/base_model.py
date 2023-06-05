@@ -1,5 +1,8 @@
-from peewee import Model, SqliteDatabase
+from peewee import Model
+
+from utils.database import Database
+
 
 class BaseModel(Model):
     class Meta:
-        database = None
+        database = Database().get_connection()
