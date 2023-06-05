@@ -1,8 +1,8 @@
 import peewee as pw 
 
-from base_model import BaseModel
-from student import Student
-from test import Test 
+from models.base_model import BaseModel
+from models.student import Student
+from models.test import Test 
 
 class Result(BaseModel):
     id = pw.AutoField()

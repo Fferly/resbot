@@ -1,2 +1,9 @@
+from controllers.WebAdminController import WebAdminController
+from utils.database import Database
+
+
 if __name__ == '__main__':
-    pass
+    db = Database().get_connection()
+
+    #web_controller = WebAdminController()
+

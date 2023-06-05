@@ -1,4 +1,4 @@
-from peewee import Model
+from peewee import Model, SqliteDatabase
 
 class BaseModel(Model):
     class Meta:

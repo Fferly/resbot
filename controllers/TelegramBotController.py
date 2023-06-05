@@ -1,2 +1,2 @@
-class TelegramBotController():
-    pass
+class TelegramBotController:
+    pass    

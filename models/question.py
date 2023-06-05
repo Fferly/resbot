@@ -1,7 +1,7 @@
 import peewee as pw
 
-from base_model import BaseModel
-from test import Test
+from models.base_model import BaseModel
+from models.test import Test
 
 class Question(BaseModel):
     id = pw.AutoField()
