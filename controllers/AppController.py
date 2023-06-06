@@ -30,6 +30,4 @@ class AppController:
 
 
         web_controller.run_app()
-        bot_controller.run_app()   
-
-
+        

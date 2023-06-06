@@ -16,13 +16,13 @@ class WebAdminController:
     def create_test():
         pass
 
-    def add_student():
-        pass
+    def add_student(self):
+        return self.view.show_add_student()
 
     def view_tests():
         pass
 
     def view_students(self):
         students = []
-        print('contr')
         return self.view.show_students(students)
+
