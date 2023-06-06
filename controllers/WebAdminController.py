@@ -31,6 +31,4 @@ class WebAdminController:
 
     def students(self):
         students = StudentController.get_all_students()
-        print(students)
         return WebAdminView.show_students(students)
-

@@ -14,10 +14,10 @@
     <div class="form_container">
         <form class="form" method="POST" action="{{ url_for('add_student') }}">
             <section class="form__section">
-                <input class="form__input form__text_field" type="text" name="student_name" id="student_name" placeholder="Student name">
+                <input class="form__input form__text_field" type="text" name="student_name" id="student_name" placeholder="Student name" required>
             </section>
             <section class="form__section">
-                <input class="form__input form__text_field" type="text" name="student_group" id="student_group" placeholder="Student group">
+                <input class="form__input form__text_field" type="text" name="student_group" id="student_group" placeholder="Student group" required>
             </section>
             <section>
                 <input class='form__input button' type="submit" id="add_student_button" value="Add student">
