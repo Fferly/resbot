@@ -1,13 +1,13 @@
-from flask import Flask
+from flask import Flask, request
+
+from controllers.StudentController import StudentController
+from views.WebAdminView import WebAdminView
 
 from resources.config import project_name 
-from views.WebAdminView import WebAdminView
 
 
 class WebAdminController:
-    def __init__(self, db):
-        self.view = WebAdminView()
-        self.db = db
+    def __init__(self):
         self.app = Flask(project_name)
 
     def run_app(self):
@@ -17,12 +17,20 @@ class WebAdminController:
         pass
 
     def add_student(self):
-        return self.view.show_add_student()
+        if request.method == 'POST':
+            student_name = request.form['student_name']
+            student_group = request.form['student_group']
+            StudentController.create_student(
+                student_name, student_group
+            )
+            return WebAdminView.redirect_to_add_student()
+        return WebAdminView.show_add_student()
 
-    def view_tests():
+    def tests():
         pass
 
-    def view_students(self):
-        students = []
-        return self.view.show_students(students)
+    def students(self):
+        students = StudentController.get_all_students()
+        print(students)
+        return WebAdminView.show_students(students)
 

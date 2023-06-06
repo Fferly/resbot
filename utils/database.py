@@ -12,4 +12,3 @@ class Database:
 
     def get_connection(self):
         return self.db
-    

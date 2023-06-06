@@ -1,16 +1,17 @@
-from flask import redirect, render_template
+from flask import redirect, render_template, url_for
 
 class WebAdminView:
-    def show_students(self, students):
-        return render_template('students.html', students=students)
+    @staticmethod
+    def show_students(students):
+        return render_template('students.jinja', students=students)
 
     @staticmethod
     def show_tests(tests):
-        pass
+        return render_template('tests.jinja')
 
     @staticmethod
     def show_add_test():
-        pass
+        return render_template('add_test.jinja')
 
     @staticmethod
     def show_add_student():
@@ -18,16 +19,16 @@ class WebAdminView:
 
     @staticmethod
     def redirect_to_students():
-        pass
+        return redirect(url_for('students'))
 
     @staticmethod
     def redirect_to_tests():
-        pass
+        return redirect(url_for('tests'))
 
     @staticmethod
-    def redirect_to_add_students():
-        pass
+    def redirect_to_add_student():
+        return redirect(url_for('add_student'))
 
     @staticmethod
     def reirect_to_add_test():
-        pass
+        return redirect(url_for('test'))

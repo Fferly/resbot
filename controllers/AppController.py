@@ -19,14 +19,14 @@ class AppController:
            [Student, Test, Question, Option, Result]
         )
 
-        web_controller = WebAdminController(self.db)
-        bot_controller = TelegramBotController(self.db)
+        web_controller = WebAdminController()
+        bot_controller = TelegramBotController()
 
         app = web_controller.app
-        app.add_url_rule('/admin/create_test', view_func=web_controller.create_test)
-        app.add_url_rule('/admin/add_student', view_func=web_controller.add_student)
-        app.add_url_rule('/admin/tests',       view_func=web_controller.view_tests)
-        app.add_url_rule('/admin/students',    view_func=web_controller.view_students)
+        app.add_url_rule('/admin/create_test', view_func=web_controller.create_test, methods=['GET','POST'])
+        app.add_url_rule('/admin/add_student', view_func=web_controller.add_student, methods=['GET','POST'])
+        app.add_url_rule('/admin/tests',       view_func=web_controller.tests,       methods=['GET'])
+        app.add_url_rule('/admin/students',    view_func=web_controller.students,    methods=['GET'])
 
 
         web_controller.run_app()
