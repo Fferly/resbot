@@ -56,7 +56,23 @@ class WebAdminController:
         return WebAdminView.show_add_student()
 
     def tests(self):
-        pass
+        tests = TestController.get_all_tests()
+        testsToRender = {}
+
+        for test in tests:
+            questions = QuestionController.get_questions_by_test_id(
+                test_id=test.id
+            )
+            testsToRender[test] = {}
+
+            for question in questions:
+                testsToRender[test][question] = OptionController.get_options_by_question_id(
+                    question_id=question.id
+                )
+        
+        print(testsToRender)
+
+        return WebAdminView.show_tests(testsToRender)
 
     def students(self):
         students = StudentController.get_all_students()
