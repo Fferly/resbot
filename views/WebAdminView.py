@@ -30,5 +30,5 @@ class WebAdminView:
         return redirect(url_for('add_student'))
 
     @staticmethod
-    def reirect_to_add_test():
-        return redirect(url_for('test'))
+    def redirect_to_add_test():
+        return redirect(url_for('add_test'))

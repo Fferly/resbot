@@ -1,6 +1,9 @@
 from flask import Flask, request
 
 from controllers.StudentController import StudentController
+from controllers.TestController    import TestController
+
+
 from views.WebAdminView import WebAdminView
 
 from resources.config import project_name 
@@ -15,7 +18,15 @@ class WebAdminController:
 
     def add_test(self):
         if request.method == 'POST':
-            pass
+            test_title = request.form['test_title']
+            test_max_points = request.form['max_points']
+
+            TestController.add_test(test_title, test_max_points)
+
+            questions = request.form['questions_json']
+            print(questions)
+
+            return WebAdminView.redirect_to_add_test()
         return WebAdminView.show_add_test()
 
     def add_student(self):

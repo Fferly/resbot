@@ -13,7 +13,7 @@
     {% include 'header.jinja' %}
 
     <div class="form_container">
-        <form class="form" method="POST" action="{{ url_for('add_test') }}">
+        <form class="form" method="POST" action="{{ url_for('add_test') }}" id="form-add-test">
             <section class="form__section">
                 <input class="form__input form__text_field" type="text" name="test_title" id="test_title" placeholder="Test title" required>
             </section>
@@ -21,7 +21,7 @@
                 <input class="form__input form__text_field" type="text" name="max_points" id="max_points" placeholder="Max points" required>
             </section>
 
-            <section id="questions">
+            <section id="questions_container">
               
             </section>
             
@@ -30,7 +30,7 @@
             </section>
 
             <section >
-                <input class='form__input button' type="submit" id="add_test_button" value="Add test">
+                <input class='form__input button' type="button" id="add_test_button" value="Add test">
             </section>
         </form>
     </div>
