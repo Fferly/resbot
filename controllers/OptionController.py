@@ -1,4 +1,4 @@
-from models.question import Option
+from models.option import Option
 
 class OptionController:
     @staticmethod

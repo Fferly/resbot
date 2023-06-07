@@ -1,8 +1,10 @@
+import json
 from flask import Flask, request
 
-from controllers.StudentController import StudentController
-from controllers.TestController    import TestController
-
+from controllers.StudentController  import StudentController
+from controllers.TestController     import TestController
+from controllers.QuestionController import QuestionController
+from controllers.OptionController   import OptionController
 
 from views.WebAdminView import WebAdminView
 
@@ -21,10 +23,24 @@ class WebAdminController:
             test_title = request.form['test_title']
             test_max_points = request.form['max_points']
 
-            TestController.add_test(test_title, test_max_points)
+            addedTest = TestController.add_test(test_title, test_max_points)
 
-            questions = request.form['questions_json']
-            print(questions)
+            questions = json.loads(request.form['questions_json']).values()
+            
+            for question in questions:
+                addedQuestion = QuestionController.add_question(
+                    title=question['title'],
+                    test_id=addedTest.id
+                )
+
+                options = question['options']
+
+                for option in options:
+                    OptionController.add_option(
+                        text=option['text'],
+                        is_right=option['isRight'],
+                        question_id=addedQuestion.id
+                    )
 
             return WebAdminView.redirect_to_add_test()
         return WebAdminView.show_add_test()
