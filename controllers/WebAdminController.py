@@ -13,8 +13,10 @@ class WebAdminController:
     def run_app(self):
         self.app.run()
 
-    def create_test():
-        pass
+    def add_test(self):
+        if request.method == 'POST':
+            pass
+        return WebAdminView.show_add_test()
 
     def add_student(self):
         if request.method == 'POST':
@@ -26,7 +28,7 @@ class WebAdminController:
             return WebAdminView.redirect_to_add_student()
         return WebAdminView.show_add_student()
 
-    def tests():
+    def tests(self):
         pass
 
     def students(self):

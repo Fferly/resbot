@@ -23,7 +23,7 @@ class AppController:
         bot_controller = TelegramBotController()
 
         app = web_controller.app
-        app.add_url_rule('/admin/create_test', view_func=web_controller.create_test, methods=['GET','POST'])
+        app.add_url_rule('/admin/add_test',    view_func=web_controller.add_test,    methods=['GET','POST'])
         app.add_url_rule('/admin/add_student', view_func=web_controller.add_student, methods=['GET','POST'])
         app.add_url_rule('/admin/tests',       view_func=web_controller.tests,       methods=['GET'])
         app.add_url_rule('/admin/students',    view_func=web_controller.students,    methods=['GET'])

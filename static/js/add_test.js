@@ -14,23 +14,23 @@ window.onload = () => {
 
             <div class="options" id="options_{{current_number}}">
                 <div class="option">
-                    <input type="radio" name="question_{{current_number}}" value="">
-                    <input type="text"  name="text_{{current_number}}_1" id="">
+                    <input class="option__radiobutton" type="radio" name="question_{{current_number}}" value="question_{{current_number}}_option_1">
+                    <input class="option__textfield" type="text"  name="text_{{current_number}}_1" id="">
                 </div>
 
                 <div class="option">
-                    <input type="radio" name="question_{{current_number}}" value="">
-                    <input type="text"  name="text_{{current_number}}_2" id="">
+                    <input class="option__radiobutton" type="radio" name="question_{{current_number}}" value="question_{{current_number}}_option_1">
+                    <input class="option__textfield" type="text"  name="text_{{current_number}}_2" id="">
                 </div>  
 
                 <div class="option">
-                    <input type="radio" name="question_{{current_number}}" value="">
-                    <input type="text"  name="text_{{current_number}}_3" id="">
+                    <input class="option__radiobutton" type="radio" name="question_{{current_number}}" value="question_{{current_number}}_option_1">
+                    <input class="option__textfield" type="text"  name="text_{{current_number}}_3" id="">
                 </div>  
 
                 <div class="option">
-                    <input type="radio" name="question_{{current_number}}" value="">
-                    <input type="text"  name="text_{{current_number}}_4" id="">
+                    <input class="option__radiobutton" type="radio" name="question_{{current_number}}" value="question_{{current_number}}_option_1">
+                    <input class="option__textfield" type="text"  name="text_{{current_number}}_4" id="">
                 </div>  
             </div>
         </section>

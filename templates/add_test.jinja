@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add student</title>
+    <title>Add test</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
 </head>
 <body>
     {% include 'header.jinja' %}
@@ -21,19 +22,19 @@
             </section>
 
             <section id="questions">
-                
+              
             </section>
             
-            <section>
-                <input type="button" value="Add question" id="add_question_button">
+            <section class="form__section">
+                <input class="form__input button" type="button" value="Add question" id="add_question_button">
             </section>
 
-            <section>
+            <section >
                 <input class='form__input button' type="submit" id="add_test_button" value="Add test">
             </section>
         </form>
     </div>
 
-    <script src="../static/js/add_test.js"></script>
+    <script src="{{ url_for('static', filename='js/add_test.js') }}"></script>
 </body>
 </html>
