@@ -18,6 +18,9 @@ class WebAdminController:
     def run_app(self):
         self.app.run()
 
+    def index(self):
+        return WebAdminView.redirect_to_tests()
+
     def add_test(self):
         if request.method == 'POST':
             test_title = request.form['test_title']
