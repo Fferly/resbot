@@ -16,12 +16,14 @@
         <div class="students__header">
             <p class="header__cell cell">Name</p>
             <p class="header__cell cell">Group</p>
+            <p class="header__cell cell">TG nick</p>
         </div>
 
        {% for student in students %}
         <div class="student">
             <p class="cell">{{ student.name }}</p>
             <p class="cell">{{ student.group }}</p>
+            <p class="cell">{{ student.tg_nick }}</p>
         </div>
         {% endfor %}
 

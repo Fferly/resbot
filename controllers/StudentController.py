@@ -2,10 +2,11 @@ from models.student import Student
 
 class StudentController:
     @staticmethod
-    def create_student(name, group):
+    def create_student(name, group, tg_nick):
         student = Student.create(
             name=name,
-            group=group
+            group=group,
+            tg_nick=tg_nick
         )
         return student
     

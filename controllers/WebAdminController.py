@@ -49,8 +49,9 @@ class WebAdminController:
         if request.method == 'POST':
             student_name = request.form['student_name']
             student_group = request.form['student_group']
+            student_tg = request.form['student_tg']
             StudentController.create_student(
-                student_name, student_group
+                student_name, student_group, student_tg
             )
             return WebAdminView.redirect_to_add_student()
         return WebAdminView.show_add_student()
