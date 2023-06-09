@@ -7,7 +7,7 @@ class WebAdminView:
 
     @staticmethod
     def show_tests(tests):
-        return render_template('tests.jinja')
+        return render_template('tests.jinja', tests=tests)
 
     @staticmethod
     def show_add_test():

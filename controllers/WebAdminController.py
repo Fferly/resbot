@@ -57,21 +57,29 @@ class WebAdminController:
 
     def tests(self):
         tests = TestController.get_all_tests()
-        testsToRender = {}
+        testsToRender = []
 
         for test in tests:
+            testToAdd = {}
+            testToAdd['title'] = test.title
+            testToAdd['questions'] = []
+
             questions = QuestionController.get_questions_by_test_id(
                 test_id=test.id
             )
-            testsToRender[test] = {}
 
             for question in questions:
-                testsToRender[test][question] = OptionController.get_options_by_question_id(
+                questionToAdd = {}
+                questionToAdd['title'] = question.title
+                questionToAdd['options'] = OptionController.get_options_by_question_id(
                     question_id=question.id
                 )
+            
+                testToAdd['questions'].append(questionToAdd)
         
-        print(testsToRender)
+            testsToRender.append(testToAdd)
 
+        print(testsToRender)
         return WebAdminView.show_tests(testsToRender)
 
     def students(self):
