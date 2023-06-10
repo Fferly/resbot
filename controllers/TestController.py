@@ -8,6 +8,14 @@ class TestController:
             max_points=max_points
         )
         return test
+    
+    @staticmethod
+    def get_test_by_test_title(title):
+        return Test.select().where(Test.title == title).get()
+    
+    @staticmethod
+    def get_test_by_test_id(test_id):
+        return Test.select().where(Test.id == test_id).get()
 
     @staticmethod
     def get_all_tests():

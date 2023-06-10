@@ -11,6 +11,10 @@ class OptionController:
         return option
 
     @staticmethod
+    def get_right_option_by_question_id(question_id):
+        return list(Option.select().where(Option.question_id == question_id & Option.is_right).execute())[0]
+
+    @staticmethod
     def get_options_by_question_id(question_id):
         options = list(
             Option.select()

@@ -6,6 +6,7 @@ from models.test import Test
 
 class Result(BaseModel):
     id = pw.AutoField()
-    stud_id = pw.ForeignKeyField(Student, backref='results')
+    stud_tg = pw.ForeignKeyField(Student, backref='results')
     test_id = pw.ForeignKeyField(Test, backref='results')
+    points = pw.FloatField()
     

@@ -83,7 +83,6 @@ class WebAdminController:
         
             testsToRender.append(testToAdd)
 
-        print(testsToRender)
         return WebAdminView.show_tests(testsToRender)
 
     def students(self):
