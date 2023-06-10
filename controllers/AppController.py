@@ -17,24 +17,29 @@ class AppController:
         self.db = Database().get_connection()
 
     def run_app(self):
-        self.db.create_tables(
-           [Student, Test, Question, Option, Result]
-        )
+        try:
+            self.db.create_tables(
+                [Student, Test, Question, Option, Result]
+            )
 
-        web_controller = WebAdminController()
+            web_controller = WebAdminController()
 
-        app = web_controller.get_app()
-        bot = TelegramBotController.get_bot()
+            app = web_controller.get_app()
+            bot = TelegramBotController.get_bot()
 
-        app.add_url_rule('/admin/add_test',    view_func=web_controller.add_test,    methods=['GET','POST'])
-        app.add_url_rule('/admin/add_student', view_func=web_controller.add_student, methods=['GET','POST'])
-        app.add_url_rule('/admin/tests',       view_func=web_controller.tests,       methods=['GET'])
-        app.add_url_rule('/admin/students',    view_func=web_controller.students,    methods=['GET'])
-        app.add_url_rule('/',                  view_func=web_controller.index,       methods=['GET'])
+            app.add_url_rule('/admin/add_test',    view_func=web_controller.add_test,    methods=['GET','POST'])
+            app.add_url_rule('/admin/add_student', view_func=web_controller.add_student, methods=['GET','POST'])
+            app.add_url_rule('/admin/tests',       view_func=web_controller.tests,       methods=['GET'])
+            app.add_url_rule('/admin/students',    view_func=web_controller.students,    methods=['GET'])
+            app.add_url_rule('/',                  view_func=web_controller.index,       methods=['GET'])
+            
+            bot_thread = threading.Thread(target=bot.polling)
+            bot_thread.start()
+
+            app.run(port=7000)
+            
+        finally:
+            bot_thread.join()
         
-        bot_thread = threading.Thread(target=bot.polling)
-        bot_thread.start()
-
-        app.run(port=7000)
 
         

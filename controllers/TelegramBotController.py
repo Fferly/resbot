@@ -1,5 +1,6 @@
 import telebot
 
+from controllers.TestController import TestController
 from views.TelegramBotView import TelegramBotView
 
 from resources.config import bot_token
@@ -18,8 +19,22 @@ class TelegramBotController:
         TelegramBotView.show_start(bot, message)
 
     @staticmethod
-    def handle_tests(self):
-        pass
+    @bot.message_handler(func=lambda message: message.text == '/tests')
+    def handle_tests(message):
+        tests = TestController.get_all_tests()
+        test_names = []
+
+
+        for test in tests:
+            test_names.append(
+                test.title
+            )
+
+        print(test_names)
+        print(tests)
+
+        TelegramBotView.show_tests(bot, message, test_names)
+
 
     @staticmethod
     def handle_results():
