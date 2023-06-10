@@ -16,6 +16,10 @@ class WebAdminView:
     @staticmethod
     def show_add_student():
         return render_template('add_student.jinja')
+    
+    @staticmethod
+    def show_results(students, results):
+        return render_template('results.jinja', students=students, results=results)
 
     @staticmethod
     def redirect_to_students():

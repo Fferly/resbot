@@ -5,6 +5,7 @@ from controllers.StudentController  import StudentController
 from controllers.TestController     import TestController
 from controllers.QuestionController import QuestionController
 from controllers.OptionController   import OptionController
+from controllers.ResultController   import ResultController 
 
 from views.WebAdminView import WebAdminView
 
@@ -88,3 +89,21 @@ class WebAdminController:
     def students(self):
         students = StudentController.get_all_students()
         return WebAdminView.show_students(students)
+    
+    def results(self):
+        resultsToRender = {}
+        students = StudentController.get_all_students()
+
+        for student in students:
+            resultsToRender[student] = []
+            student_results = ResultController.get_all_results_by_stud_tg(student.tg_nick)
+            
+            for res in student_results:
+                test = TestController.get_test_by_test_id(res.test_id)
+                resultToRender = {}
+                resultToRender['test_title'] = test.title
+                resultToRender['points'] = res.points
+                resultToRender['max_points'] = test.max_points
+                resultsToRender[student].append(resultToRender)
+        
+        return WebAdminView.show_results(results=resultsToRender, students=students)

@@ -31,7 +31,9 @@ class AppController:
             app.add_url_rule('/admin/add_student', view_func=web_controller.add_student, methods=['GET','POST'])
             app.add_url_rule('/admin/tests',       view_func=web_controller.tests,       methods=['GET'])
             app.add_url_rule('/admin/students',    view_func=web_controller.students,    methods=['GET'])
+            app.add_url_rule('/admin/results',     view_func=web_controller.results,     methods=['GET'])
             app.add_url_rule('/',                  view_func=web_controller.index,       methods=['GET'])
+
             
             bot_thread = threading.Thread(target=bot.polling)
             bot_thread.start()
