@@ -30,9 +30,6 @@ class TelegramBotController:
                 test.title
             )
 
-        print(test_names)
-        print(tests)
-
         TelegramBotView.show_tests(bot, message, test_names)
 
 
