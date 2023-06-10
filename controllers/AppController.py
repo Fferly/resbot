@@ -1,3 +1,5 @@
+import threading
+
 from controllers.WebAdminController    import WebAdminController
 from controllers.TelegramBotController import TelegramBotController
 
@@ -20,15 +22,19 @@ class AppController:
         )
 
         web_controller = WebAdminController()
-        bot_controller = TelegramBotController()
 
-        app = web_controller.app
+        app = web_controller.get_app()
+        bot = TelegramBotController.get_bot()
+
         app.add_url_rule('/admin/add_test',    view_func=web_controller.add_test,    methods=['GET','POST'])
         app.add_url_rule('/admin/add_student', view_func=web_controller.add_student, methods=['GET','POST'])
         app.add_url_rule('/admin/tests',       view_func=web_controller.tests,       methods=['GET'])
         app.add_url_rule('/admin/students',    view_func=web_controller.students,    methods=['GET'])
         app.add_url_rule('/',                  view_func=web_controller.index,       methods=['GET'])
+        
+        bot_thread = threading.Thread(target=bot.polling)
+        bot_thread.start()
 
+        app.run(port=7000)
 
-        web_controller.run_app()
         

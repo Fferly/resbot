@@ -15,8 +15,8 @@ class WebAdminController:
     def __init__(self):
         self.app = Flask(project_name)
 
-    def run_app(self):
-        self.app.run()
+    def get_app(self):
+        return self.app
 
     def index(self):
         return WebAdminView.redirect_to_tests()
